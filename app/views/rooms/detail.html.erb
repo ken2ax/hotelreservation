@@ -1,0 +1,28 @@
+<%= render 'shared/header' %>
+<div class="mypage-background-area">
+  <h2>施設詳細</h2>
+
+  <div>
+    <div>
+      <div>
+        <div><%= image_tag (@room.room_image.url), alt: "room_image", class: "room_image" %></div>
+      </div>
+      <div>
+        <span>施設名:</span> <%= @room.name %>
+      </div>
+      <div>
+        <span>住所:</span> <%= @room.address %>
+      </div>
+      <div>
+        <span>紹介文:</span> <%= @room.detail %>
+      </div>
+      <div>
+        <span class="price-text">料金: <%= @room.price %>円</span> 
+      </div>
+    </div>
+  <div>
+
+  <div><%= link_to "予約ページに移動する", new_room_reservation_path(room_id: @room.id) %></div>
+  <div><%= link_to "戻る", :back %></div>
+</div>
+<%= render 'shared/footer' %>

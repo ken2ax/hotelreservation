@@ -1,0 +1,44 @@
+<%= render 'shared/header' %>
+<div class="mypage-background-area">
+  <h2><%= @user.name %>さんの予約一覧</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>施設画像</th>
+        <th>施設名</th>
+        <th>紹介文</th>
+        <th>チェックイン</th>
+        <th>チェックアウト</th>
+        <th>宿泊人数</th>
+        <th>合計料金</th>
+        <th>予約確定日時</th>
+      </tr>
+    <thead>
+
+    <tbody>
+      <% if @reservations.any? %>
+        <% @reservations.each do |reservation| %>
+          <tr>
+            <td><%= image_tag (reservation.room.room_image.url), alt: "room_image", class: "room_image" %></td>
+            <td><%= reservation.room.name %></td>
+            <td><%= reservation.room.detail %></td>
+            <td><%= l reservation.checkin %></td>
+            <td><%= l reservation.checkout %></td>
+            <td><%= reservation.people %>人</td>
+            <td><%= reservation.room.price * reservation.people * reservation.stay_days.to_i %>円</td>
+            <td><%= l reservation.created_at %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <p>予約がありません</p>
+      <% end %>
+    </tbody>
+  </table>
+
+  <ul class="mypage-link-container">
+    <li><%= link_to "マイページへ戻る", mypage_user_path(current_user), class: "mypage-link btn btn-secondary" %></li>
+    <li><%= link_to "トップページへ戻る", home_index_path, class: "mypage-link btn btn-secondary" %></li>
+  </ul>
+</div>
+<%= render 'shared/footer' %>

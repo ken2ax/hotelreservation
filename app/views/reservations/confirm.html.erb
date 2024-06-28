@@ -1,0 +1,26 @@
+<%= render 'shared/header' %>
+<div class="mypage-background-area">
+
+<h2>予約内容確認</h2>
+
+<%= simple_form_for @reservation, url:room_reservations_path, local: true do |f| %>
+      <p><strong>チェックイン日:</strong> <%= l @reservation.checkin %></p>
+      <p><strong>チェックアウト日:</strong> <%= l @reservation.checkout %></p>
+      <p><strong>宿泊日数:</strong> <%=@reservation.stay_days.to_i %>日</p>
+      <p><strong>宿泊人数:</strong> <%= @reservation.people %>人</p>
+      <p class="price-text"><strong>料金:</strong> <%= @reservation.people * @reservation.room.price * @reservation.stay_days.to_i %>円</p>
+<% end %>
+
+<%= form_with model: [@room, @reservation ], url:room_reservations_path, local: true do |f| %>
+  <%= f.hidden_field :room_id %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :checkin %>
+  <%= f.hidden_field :checkout %>
+  <%= f.hidden_field :people %>
+  <div>
+    <div><%= f.submit "予約を確定する"%></div>
+    <div><%= f.submit "修正する", name: :back %></div>
+  </div>
+<% end %>
+</div>
+<%= render 'shared/footer' %>

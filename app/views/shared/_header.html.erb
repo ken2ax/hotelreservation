@@ -1,0 +1,32 @@
+<header class="header">
+  <div class="d-flex justify-content-between">
+    <div>
+      <%= link_to "Travel Share", home_index_path, class: "header_title" %>
+    </div>
+    <nav>
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <% if current_user.user_image? %>
+            <%= image_tag current_user.user_image.url, alt: "user_icon", class: "icon_image" %>
+         <% else %>
+            <%= image_tag "default-avatar.png", alt: "user_icon", class: "icon_image" %>
+          <% end %>
+          <button class="btn btn-socendary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="btn-username"><%= current_user.name %></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><%= link_to "マイページ", mypage_user_path(current_user), class: "li-link" %></li>
+            <li><%= link_to "施設の新規登録", new_room_path, class: "li-link" %></li>
+            <li><%= link_to "登録済み施設一覧", show_room_user_path(current_user), class: "li-link" %></li>
+            <li><%= link_to "予約の確認",show_reservation_user_path(current_user), class: "li-link" %></li>
+            <li><%= link_to "アカウント設定", edit_user_registration_path, class: "li-link" %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "li-link" %></li>
+          </ul>
+        </div>
+      <% else %>
+        <%= link_to "新規登録", new_user_registration_path, class: "navmenu" %>
+        <%= link_to "ログイン", new_user_session_path, class: "navmenu" %>
+      <% end %>
+    </nav>
+  </div>
+</header>

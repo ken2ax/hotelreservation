@@ -1,0 +1,33 @@
+<%= render 'shared/header' %>
+<div class="mypage-background-area">
+
+<h2>新規予約</h2>
+
+<%= render "shared/error", object: @reservation %>
+
+<%= form_with model: [@room, @reservation ], url:confirm_room_reservations_path(@room.id), local: true do |f| %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <div>
+    <div>
+      <div><%= f.label :checkin, "チェックイン日" %></div>
+      <div><%= f.date_field :checkin, placeholder: "年/月/日" %></div>
+    </div>
+
+    <div>
+      <div><%= f.label :checkout, "チェックアウト日" %></div>
+      <div><%= f.date_field :checkout, placeholder: "年/月/日" %></div>
+    </div>
+
+    <div>
+      <div><%= f.label :people, "宿泊人数" %></div>
+      <div><%= f.text_field :people, placeholder: "人数を入力してください" %></div>
+    </div>
+
+    <div>
+      <div><%= f.submit "予約する"%></div>
+      <div><%= link_to "戻る", :back %></div>
+    </div>
+<% end %>
+</div>
+<%= render 'shared/footer' %>
