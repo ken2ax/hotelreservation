@@ -1,4 +1,26 @@
 ja:
+  activerecord:
+    models:
+      user: ユーザー
+      room: 施設
+      reservation: 予約
+    attributes:
+      user:
+        name: ユーザー名
+        introduction: 自己紹介
+        user_image: ユーザー画像
+      room:
+        name: 施設名
+        detail: 施設詳細
+        price: 料金
+        address: 住所
+        introduticon: 施設の紹介文
+        room_image: 施設の画像
+      reservation:
+        checkin: チェックイン日
+        checkout: チェックアウト日
+        people: 人数
+        stay_days: 宿泊日数
   date:
     formats:
       default: "%Y/%m/%d"
