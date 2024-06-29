@@ -41,7 +41,4 @@ yarn-debug.log*
 
 /gitignore/
 /public/uploads/
-/app/assets/images/tokyo-image.jpeg
-/app/assets/images/osaka-image.jpg
-/app/assets/images/kyoto-image.jpeg
-/app/assets/images/sapporo-image.jpg
+
