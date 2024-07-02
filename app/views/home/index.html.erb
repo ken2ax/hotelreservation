@@ -1,0 +1,52 @@
+<%= render 'shared/header' %>
+<div class="mypage-background-area">
+
+  <div class="top-container-background-area">
+    <%= image_tag "Fujiyama.jpeg", class: "top-background-image" %>
+    <div class="top-container">
+      <% if user_signed_in? %>
+        <p class="welcome-text">こんにちは、<%= current_user.name %>さん</p>
+      <% else %>
+        <p class="welcome-text">こんにちは、ゲストさん</p>
+      <% end %>
+      <p class="top-text">ここから素敵な旅へ出かけましょう</>
+      <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form search-form-field") do |f| %>
+        <%= f.text_field :keyword, placeholder: "住所から検索する", class: "search-input" %>
+        <%= f.submit "検索", class: "btn search-btn btn-secondary" %>
+      <% end %>
+    </div>
+  </div>
+
+  <p class="recommend-area">おすすめのエリア</p>
+  <div class="area-link-container">
+    <div class="area-container">
+      <%= link_to area_search_rooms_path(:area => "東京"), class: "area-search-link" do %>
+        <%= image_tag "tokyo-image.jpeg", alt: "area-image", class: "area-image" %>
+        <span class="area-text">東京</span>
+      <% end %>
+    </div>
+    <div class="area-container">
+      <%= link_to area_search_rooms_path(:area => "大阪"), class: "area-search-link" do %>
+        <%= image_tag "osaka-image.jpg", alt: "area-image", class: "area-image" %>
+        <span class="area-text">大阪</span>
+      <% end %>
+    </div>
+    <div class="area-container">
+      <%= link_to area_search_rooms_path(:area => "京都"), class: "area-search-link" do %>
+        <%= image_tag "kyoto-image.jpeg", alt: "area-image", class: "area-image" %>
+        <span class="area-text">京都</span>
+      <% end %>
+    </div>
+    <div class="area-container">
+      <%= link_to area_search_rooms_path(:area => "札幌"), class: "area-search-link" do %>
+        <%= image_tag "sapporo-image.jpg", alt: "area-image", class: "area-image" %>
+        <span class="area-text">札幌</span>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="room-link-container">
+    <%= link_to "施設一覧を見る", rooms_path, class: "room-link-text" %>
+  </div>
+</div>
+<%= render 'shared/footer' %>

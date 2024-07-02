@@ -1,0 +1,35 @@
+<%= render 'shared/header' %>
+<div class="mypage-background-area">
+  <h2>施設の新規登録</h2>
+
+  <%= render "shared/error", object: @room %>
+
+  <%= form_with model: @room do |f| %>
+    <div>
+      <div>
+        <div><%= f.label :name, "施設名" %></div>
+        <div><%= f.text_field :name, placeholder: "施設の名前を入力してください" %></div>
+      </div>
+      <div>
+        <div><%= f.label :detail, "施設詳細" %></div>
+        <div><%= f.text_area :detail, placeholder: "施設の詳細情報を入力してください" %></div>
+      </div>
+      <div>
+        <div><%= f.label :price, "料金" %></div>
+        <div><%= f.text_field :price, placeholder: "1泊あたりの料金を入力してください(単位は不要です)" %></div>
+      </div>
+      <div>  
+        <div><%= f.label :address, "住所" %></div>
+        <div><%= f.text_field :address, placeholder: "住所を入力してください" %></div>
+      </div>
+      <div>
+        <div><%= f.label :image, "施設画像" %></div>
+        <div><%= f.file_field :room_image %></div>
+      </div>
+      <div>
+        <div><%= f.submit "登録する", class: "btn btn-primary" %></div>
+        <div><%= link_to "戻る", :back, class: "btn btn-secondary" %></div>
+      </div>
+  <% end %>
+</div>
+<%= render 'shared/footer' %>

@@ -1,0 +1,43 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.mypage-background-area{
+  width: 100%;
+  height: auto;
+  background-color: #87cefa;
+}
+
+.mypage_user_icon_image{
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.mypage-text{
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.mypage-menu{
+  width: 35%;
+  height: auto;
+  border: 4px ridge #FFF;
+  list-style: none;
+  text-decoration: none;
+}
+
+.mypage-link{
+  width: auto;
+  height: auto;
+  color: #000;
+  text-decoration: none;
+}
+
+.mypage-link-container{
+  width: 100%;
+  height: auto;
+  list-style: none;
+  text-decoration: none;
+}

@@ -1,0 +1,21 @@
+<%= render 'shared/header' %>
+<div class="mypage-background-area">
+  <h3>プロフィール</h3>
+  <% if current_user.user_image? %>
+    <%= image_tag current_user.user_image.url, alt: "user_icon", class: "mypage_user_icon_image" %>
+  <% else %>
+    <%= image_tag "default-avatar.png", alt: "user_icon", class: "my_page_user_icon_image" %>
+  <% end %>
+  <p class="mypage-text">名前 : <%= @user.name %></p>
+  <p class="mypage-text">自己紹介 : <%= @user.introduction %></p>
+
+  <ul class="mypage-menu"> 
+    <li><%= link_to 'アカウント情報', account_user_path(current_user), class: "mypage-link" %></li>
+    <li><%= link_to 'プロフィールを編集する', edit_user_path(current_user), class: "mypage-link" %></li>
+    <li><%= link_to "登録済み施設一覧", show_room_user_path(current_user), class: "mypage-link" %></li>
+    <li><%= link_to "予約の確認",show_reservation_user_path(current_user), class: "mypage-link" %></li>
+  </ul>
+
+  <%= link_to "トップページへ戻る", home_index_path, class: "btn btn-secondary" %>
+</div>
+<%= render 'shared/footer' %>

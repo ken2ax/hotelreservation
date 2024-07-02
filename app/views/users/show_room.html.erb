@@ -1,0 +1,38 @@
+<%= render 'shared/header' %>
+<div class="mypage-background-area">
+  <h2>登録済み施設一覧</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>施設画像</th>
+        <th>施設名</th>
+        <th>紹介文</th>
+        <th>料金</th>
+        <th>作成日</th>
+        <th>編集</th>
+        <th>予約</th>
+      </tr>
+    <thead>
+
+    <tbody>
+      <% @rooms.each do |room| %>
+        <tr>
+          <td><%= image_tag (room.room_image.url), alt: "room_image", class: "room_image" %></td>
+          <td><%= link_to room.name, detail_room_path(room.id) %></td>
+          <td><%= room.detail %></td>
+          <td><%= room.price %>円</td>
+          <td><%= l room.created_at %></td>
+          <td><%= link_to "この施設を編集する", edit_room_path(room.id) %></td>
+          <td><%= link_to "予約", new_room_reservation_path(room.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <ul class="mypage-link-container">
+    <li><%= link_to "マイページへ戻る", mypage_user_path(current_user), class: "mypage-link btn btn-secondary" %></li>
+    <li><%= link_to "トップページへ戻る", home_index_path, class: "mypage-link btn btn-secondary" %></li>
+  </ul>
+</div>
+<%= render 'shared/footer' %>

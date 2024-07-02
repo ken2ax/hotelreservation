@@ -1,0 +1,28 @@
+<%= render 'shared/header' %>
+<div class="mypage-background-area">
+  <h4>検索結果:<%= @rooms_count %>件</h4>
+
+  <div class="container">
+    <div class="row">
+      <% @rooms.each do |room| %>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <%= image_tag (room.room_image.url), class: "card-img-top" %>
+            <div class="card-body">
+              <h5 class="card-title"><%= room.name %></h5>
+              <p class="card-text">
+                <strong>住所:</strong> <%= room.address %><br>
+                <strong>施設詳細:</strong> <%= room.detail %><br>
+                <strong>料金:</strong> <span class="price-text"><%= room.price %>円〜</span>
+              </p>
+              <%= link_to "施設の詳細を見る", detail_room_path(room.id), class:"btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= link_to "トップページへ戻る", home_index_path, class: "btn btn-secondary" %>
+</div>
+<%= render 'shared/footer' %>

@@ -1,0 +1,13 @@
+<%= render 'shared/header' %>
+<div class="mypage-background-area">
+  <h3>アカウント情報</h3>
+  <p>メールアドレス : <%= @user.email %></p>
+  <p>パスワード : *********</p> <%# 実際はダミーデータ %>
+
+  <ul class="mypage-menu"> 
+    <li><%= link_to 'プロフィール', mypage_user_path(current_user), class: "mypage-link" %></li>
+    <li><%= link_to 'アカウント情報を変更する', edit_user_registration_path(current_user), class: "mypage-link" %></li>
+  </ul>
+  <%= link_to "トップページへ戻る", home_index_path, class: "btn btn-secondary" %>
+</div>
+<%= render 'shared/footer' %>
