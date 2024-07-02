@@ -33,11 +33,14 @@
     <%= f.text_area :introduction %>
   <div>
 
+  <div class="field">
+    <%= f.label :user_image, "ユーザーアイコン" %><br />
+    <%= f.file_field :user_image %>
+
   <div class="actions">
     <%= f.submit t('.sign_up'), class: "btn btn-primary" %>
   </div>
 <% end %>
-
 <%= render "devise/shared/links" %>
 </div>
 <%= render 'shared/footer' %>
